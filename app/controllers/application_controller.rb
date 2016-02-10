@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    @session = session
     erb :index
   end
 
@@ -62,7 +63,6 @@ class ApplicationController < Sinatra::Base
 
   ################ tweets ################
   get '/tweets' do
-    #if !!session[:id]
     redirect to '/login' unless Helpers.is_logged_in?(session)
 
     @user = User.find(session[:id])

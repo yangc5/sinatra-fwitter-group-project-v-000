@@ -1,6 +1,6 @@
-a:link, a:visited {
-  color: lightgray;
-}
+a:link, a:visited { color: lightgray; }
+a:hover { color: lightblue; }
+a:active { color: blue; }
 
 body {
   background-color: skyblue;
@@ -33,5 +33,5 @@ footer {
 }
 
 .tweets h3 {
-  text-decoration: underline;
+  text-decoration: overline;
 }
