@@ -13,7 +13,22 @@ describe "User" do
   end
 
   it "has a username" do
-    expect(@user.username).to eq("")
+    expect(@user.username).to eq("johndoe")
+  end
+
+  it "has an email" do
+    expect(@user.email).to eq("example@abc.com")
+  end
+
+  it "has a password" do
+    expect(@user.password).to eq("validpw")
+  end
+
+  it "has many tweets" do
+    @user.tweets << @tweet1
+    @user.tweets << @tweet2
+    expect(@user.tweets).to include(@tweet1)
+    expect(@user.tweets).to include(@tweet2)
   end
 
 
