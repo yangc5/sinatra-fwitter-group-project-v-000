@@ -1,3 +1,20 @@
 body {
   background-color: red
 }
+
+header h1 {
+  font-size: 4em;
+  text-align: center;
+  text-shadow: 2px 2px gray;
+}
+
+div {
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 90%;
+}
+
+.tweets h3 {
+  text-decoration: underline;
+}

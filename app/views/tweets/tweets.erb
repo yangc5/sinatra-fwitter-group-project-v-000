@@ -1,8 +1,22 @@
-<h1>Fwitter Tweets</h1>
 <% if Helpers.is_logged_in?(@session) %>
-  <h1>Welcome <%= @user.username %></h1>
-  <h3>Your Balance: <%= @user.balance %></h3>
-  <a href="/logout">Log Out</a>
+  <div class="welcome">
+    <h2>Welcome, <%= @user.username %>!</h2>
+  </div>
+
+  <div class="tweets">
+    <h3>~ Your Tweets ~</h3>
+    <% @user.tweets.each do |tweet| %>
+      <p>
+        <%= tweet.content %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="logout">
+    <a href="/logout">Log Out</a>
+  </div>
+
+
 <% else %>
   <a href="/">Home</a> <a href="/login">Log In</a> <a href="/signup">Sign Up</a>
 <% end %>
