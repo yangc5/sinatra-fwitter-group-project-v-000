@@ -1,5 +1,19 @@
+a:link, a:visited {
+  color: lightgray;
+}
+
 body {
   background-color: red
+}
+
+div {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: lightgray;
+  display: block;
+  margin: auto;
+  padding: 1em;
+  text-align: center;
+  width: 90%;
 }
 
 header h1 {
@@ -8,9 +22,12 @@ header h1 {
   text-shadow: 2px 2px gray;
 }
 
-div {
+footer {
+  background-color: rgba(0, 0, 0, 0.9);;
+  color: white;
   display: block;
   margin: auto;
+  padding: 1em;
   text-align: center;
   width: 90%;
 }
