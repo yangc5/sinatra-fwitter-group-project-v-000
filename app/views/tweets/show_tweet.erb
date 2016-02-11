@@ -6,9 +6,14 @@
   <div class="tweet">
     <h3>~ Your Tweet ~</h3>
       <p>
-        <%= @user.tweet.content %>
+        <%= @tweet.content %>
       </p>
-
+      <form class="edit_tweet" action="/tweets/<%=@tweet.id%>/edit" method="post">
+        <input type="submit" name="Edit Tweet" value="Edit Tweet">
+      </form>
+      <form class="delete_tweet" action="/tweets/<%=@tweet.id%>/delete" method="post">
+        <input type="submit" name="Delete Tweet" value="Delete Tweet">
+      </form>
   </div>
 
   <div class="logout">
