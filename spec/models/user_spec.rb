@@ -10,15 +10,8 @@ describe "User" do
     @user1_following = User.create(:username => "jane", :email => "example1@abc.com", :password => "validpw1")
     @user2_following = User.create(:username => "jenny", :email => "example2@abc.com", :password => "validpw2")
 
-
     @tweet1 = Tweet.create(:content => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
-
     @tweet2 = Tweet.create(:content => "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-
-    # @user1_tweet = Tweet.create(:content => "This is user1's tweet.")
-    #
-    # @user2_tweet = Tweet.create(:content => "This is user2's tweet.")
-
 
   end
 
