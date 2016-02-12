@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     @session = session
+    @tweets = Tweet.all
     erb :index
   end
 

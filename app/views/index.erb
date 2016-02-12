@@ -13,7 +13,7 @@
   </div>
   <div class="tweets">
     <h2>Tweets</h2>
-    <% Tweet.all.reverse do |tweet| %>
+    <% @tweets.reverse.each do |tweet| %>
       <p class="username"><%=tweet.user.username%></p>
       <p class="content"><%=tweet.content%></p>
     <% end %>
