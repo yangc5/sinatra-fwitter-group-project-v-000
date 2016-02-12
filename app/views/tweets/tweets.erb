@@ -14,8 +14,9 @@
     <% @user.tweets.each do |tweet| %>
       <p>
         <%= tweet.content %>
+        <a href="/tweets/:id">view</a>
       </p>
-      <a href="/tweets/:id">look at this tweet</a>
+
     <% end %>
   </div>
 
