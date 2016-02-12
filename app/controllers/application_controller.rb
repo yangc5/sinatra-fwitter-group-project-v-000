@@ -1,5 +1,5 @@
 require './config/environment'
-require 'pry'
+#require 'pry'
 
 class ApplicationController < Sinatra::Base
 
@@ -80,13 +80,17 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/tweets' do
-    tweet = Tweet.create(content: params[:content])
+    #tweet =
     user = User.find(session[:id])
-    user.tweets << tweet
-    if tweet.errors
-      redirect '/tweets/new'
-    else
+    #user.tweets << tweet
+    #user.save
+    #if tweet.errors
+    if Tweet.create(content: params[:content].chomp).valid?
+      binding.pry
+      user.tweets << Tweet.all.last
       redirect '/tweets'
+    else
+      redirect '/tweets/new'
     end
   end
 
