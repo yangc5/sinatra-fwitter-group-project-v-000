@@ -1,4 +1,5 @@
 require './config/environment'
+require 'pry'
 
 class ApplicationController < Sinatra::Base
 
@@ -73,7 +74,20 @@ class ApplicationController < Sinatra::Base
 
   get '/tweets/new' do
     redirect to '/login' unless Helpers.is_logged_in?(session)
+    @session = session
+    @user = User.find(session[:id])
     erb :'tweets/create_tweet'
+  end
+
+  post '/tweets' do
+    tweet = Tweet.create(content: params[:content])
+    user = User.find(session[:id])
+    user.tweets << tweet
+    if tweet.errors
+      redirect '/tweets/new'
+    else
+      redirect '/tweets'
+    end
   end
 
   get '/tweets/:id' do
@@ -82,6 +96,24 @@ class ApplicationController < Sinatra::Base
     @user = User.find(session[:id])
     @tweet = Tweet.find_by(id: params[:id])
     erb :'tweets/show_tweet'
+  end
+
+  get '/tweets/:id/edit' do
+    redirect to '/login' unless Helpers.is_logged_in?(session)
+    @session = session
+    @user = User.find(session[:id])
+    @tweet = Tweet.find_by(id: params[:id])
+    erb :'tweets/edit_tweet'
+  end
+
+  post '/tweets/:id' do
+    tweet = Tweet.find_by(id: params[:id])
+    tweet.update(content: params[:content])
+    if tweet.errors
+      redirect "/tweets/#{tweet.id}/edit"
+    else
+      redirect "/tweets/#{tweet.id}"
+    end
   end
 
   get '/users/:slug' do
