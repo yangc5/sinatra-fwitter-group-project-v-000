@@ -8,11 +8,8 @@
     <a href="/logout">Log Out</a>
   </nav>
 
-  <div class="view_tweets">
-    <h2><a href="/tweets">View your tweets.</a></h2>
-  </div>
   <div class="tweets">
-    <h2>Tweets</h2>
+    <h2>Latest Tweets</h2>
     <% @tweets.reverse.each do |tweet| %>
       <p class="username"><%=tweet.user.username%></p>
       <p class="content"><%=tweet.content%></p>

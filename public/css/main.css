@@ -45,3 +45,7 @@ footer {
 .tweets h3 {
   text-decoration: overline;
 }
+.tweets .username {
+  font-weight: bold;
+  margin-bottom: -1em;
+}
