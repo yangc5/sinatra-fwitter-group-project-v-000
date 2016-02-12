@@ -1,5 +1,4 @@
 require './config/environment'
-require 'pry'
 
 class ApplicationController < Sinatra::Base
 
@@ -12,6 +11,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     @session = session
+    @tweets = Tweet.all
     erb :index
   end
 
@@ -31,7 +31,6 @@ class ApplicationController < Sinatra::Base
       email: params[:email],
       password: params[:password]
     )
-    #binding.pry
     if user.save
       session[:id] = user.id
       redirect '/tweets'
@@ -49,7 +48,6 @@ class ApplicationController < Sinatra::Base
     user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
         session[:id] = user.id
-        #binding.pry
         redirect '/tweets'
     else
         redirect '/login'
@@ -78,13 +76,12 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/tweets' do
-    tweet = Tweet.create(content: params[:content])
     user = User.find(session[:id])
-    user.tweets << tweet
-    if tweet.errors
-      redirect '/tweets/new'
-    else
+    if Tweet.create(content: params[:content].chomp).valid?
+      user.tweets << Tweet.all.last
       redirect '/tweets'
+    else
+      redirect '/tweets/new'
     end
   end
 

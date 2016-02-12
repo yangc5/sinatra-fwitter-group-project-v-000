@@ -1,4 +1,10 @@
 <% if Helpers.is_logged_in?(@session) %>
+  <nav>
+    <a href="/">Home</a> ~
+    <a href="/tweets">My Tweets</a> ~
+    <a href="/tweets/new">Tweet</a> ~
+    <a href="/logout">Log Out</a>
+  </nav>
   <div class="welcome">
     <h2>Welcome, <%= @user.username %>!</h2>
   </div>
