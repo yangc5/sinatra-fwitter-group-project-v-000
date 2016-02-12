@@ -80,11 +80,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/tweets' do
-    #tweet =
     user = User.find(session[:id])
-    #user.tweets << tweet
-    #user.save
-    #if tweet.errors
     if Tweet.create(content: params[:content].chomp).valid?
       binding.pry
       user.tweets << Tweet.all.last
