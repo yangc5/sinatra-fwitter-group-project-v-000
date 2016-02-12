@@ -48,6 +48,9 @@ describe "User" do
     @user.follow(@user2_following)
     expect(@user.following?(@user1_following)).to eq(true)
     expect(@user.following?(@user2_following)).to eq(true)
+    expect(@user1_following.followers.include?(@user)).to eq(true)
+    @user.unfollow(@user1_following)
+    expect(@user.following?(@user1_following)).to eq(false)
   end
 
 
